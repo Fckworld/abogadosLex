@@ -1,0 +1,76 @@
+{% extends "index.html" %} <!--Heredo contenido de index, igual linksheets-->
+{% load static%}
+{% block title%} Registro {%endblock%}
+
+{%block content%}
+
+<section class="mt-5 d-flex justify-content-center" >
+    <div class="container" id="contenedor-registro">
+        <h1 class="text-center" >Registrase con nosotros!</h1>
+        <div class="row d-flex justify-content-center">
+        <form id="formulario-registro" method="POST" >
+
+            {% csrf_token %}
+
+            <div class="mb-3"> <!--Nombre-->
+                <label  class="form-label">Nombre (s):</label>
+                {{formulario.first_name}} 
+            </div>
+            <div class="mb-3"> <!--Apellido-->
+                <label  class="form-label">Apellido (s):    </label>
+                {{formulario.last_name}} 
+            </div>
+            <div class="mb-3"> <!--Rut funcionara como username ya que es obligatorio (es la id)-->
+                <label  class="form-label">Rut (con puntos y guión):</label>
+                {{formulario.username}} 
+            </div>
+            <div class="mb-3"> <!--Correo-->
+                <label  class="form-label">Correo electrónico:</label>
+                {{formulario.email}}
+            </div>
+            <div class="mb-3"> <!--Clave-->
+                <label  class="form-label">Contraseña:</label>
+                {{formulario.password1}}
+            </div>
+            <div class="mb-3"> <!--Clave Conf-->
+                <label  class="form-label">Repita contraseña:</label>
+                {{formulario.password2}}
+            </div>
+            <div class="container"> <!--Boton Registrar-->
+                <div class="row mb-3">
+                    <button type="submit" class="btn btn-light btn-sm">Registrar</button>
+                </div>
+                <div class="row text-center">
+                    <p>¿Ya tienes una cuenta?</p>
+                    <a href="{% url 'LogInPage' %}" class="">Iniciar Sesión</a>
+                </div>
+            </div>
+        </form>
+        {% for message in messages %}
+            <p id="messages" >{{message}}</p>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+{%endblock%}
+<!--   
+<form method="POST" action="">
+    {% csrf_token %} Seguridad (creo) 
+   Aqui meto todo el formulario en bruto
+        {{formulario.as_p} // .as_p solo lo hace mas bonito (ordenado), pero igual en bruto
+   
+    {{formulario.username.label}}
+    {{formulario.username}}
+
+    {{formulario.email.label}}
+    {{formulario.email}}
+
+    {{formulario.password1.label}}
+    {{formulario.password1}}
+
+    {{formulario.password2.label}}
+    {{formulario.password2}}
+    <input type="submit" value="Crear" name="Crear Usuario">
+</form>
+-->

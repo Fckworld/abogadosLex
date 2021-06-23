@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+    background-color: #302D2D;
+    color: white;
+    
+}
+.container{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+
+#imagen-balanza{
+    width: 100px;
+    height: 130px;
+}
+#formulario-ingreso{
+    max-width: 30%;
+}
+#formulario-registro{
+    max-width: 30%;
+}
